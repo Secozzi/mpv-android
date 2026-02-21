@@ -19,8 +19,7 @@ import kotlin.reflect.KProperty
 @Suppress("unused")
 class MPV(
     context: Context,
-    configDir: String = context.filesDir.resolve("mpv").toString(),
-    cacheDir: String = context.cacheDir.resolve("mpv").toString(),
+    preInit: (MPV) -> Unit = {},
 ) {
     @Suppress("unused")
     private var nativeHandle: Long = 0
@@ -425,16 +424,6 @@ class MPV(
         nativeDestroy()
     }
 
-    fun setCacheDir(cacheDir: String) {
-        setOptionString("gpu-shader-cache-dir", cacheDir)
-        setOptionString("icc-cache-dir", cacheDir)
-    }
-
-    fun setConfigDir(configDir: String) {
-        setOptionString("config", "yes")
-        setOptionString("config-dir", configDir)
-    }
-
     companion object {
         var systemLibraryLoaded = false
     }
@@ -446,10 +435,9 @@ class MPV(
             systemLibraryLoaded = true
         }
         nativeCreate(context)
+        preInit(this)
         nativeInit()
         initSession()
-        setConfigDir(configDir)
-        setCacheDir(cacheDir)
         setOptionString("idle", "once")
         setPropertyBoolean("pause", true)
     }

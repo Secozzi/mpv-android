@@ -11,7 +11,7 @@ val abiCodes = mapOf("armeabi-v7a" to 1, "arm64-v8a" to 2, "x86" to 3, "x86_64" 
 val universalBase = 8000
 
 version = "0.1.12"
-group = "io.github.abdallahmehiz"
+group = "io.github.secozzi"
 
 android {
     namespace = "is.xyz.mpv"
@@ -25,6 +25,23 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    packagingOptions {
+        jniLibs {
+            excludes.addAll(
+               listOf(
+                   "**/libavcodec.so",
+                   "**/libavdevice.so",
+                   "**/libavfilter.so",
+                   "**/libavformat.so",
+                   "**/libavutil.so",
+                   "**/libswresample.so",
+                   "**/libswscale.so",
+                   "**/libc++_shared.so",
+               )
+            )
+        }
     }
 
     tasks.withType<KotlinCompile> {
@@ -53,7 +70,7 @@ mavenPublishing {
         name.set("mpv Android library")
         description.set("The mpv library used by mpvKt.")
         inceptionYear.set("2024")
-        url.set("https://github.com/abdallahmehiz/mpv-android/")
+        url.set("https://github.com/Secozzi/mpv-android/")
         licenses {
             license {
                 name.set("MIT License")
@@ -63,15 +80,15 @@ mavenPublishing {
         }
         developers {
             developer {
-                id.set("abdallahmehiz")
-                name.set("Abdallah Mehiz")
-                url.set("https://github.com/abdallahmehiz/")
+                id.set("Secozzi")
+                name.set("Secozzi")
+                url.set("https://github.com/Secozzi/")
             }
         }
         scm {
-            url.set("https://github.com/abdallahmehiz/mpv-android/")
-            connection.set("scm:git:git://github.com/abdallahmehiz/mpv-android.git")
-            developerConnection.set("scm:git:ssh://git@github.com/abdallahmehiz/mpv-android.git")
+            url.set("https://github.com/Secozzi/mpv-android/")
+            connection.set("scm:git:git://github.com/Secozzi/mpv-android.git")
+            developerConnection.set("scm:git:ssh://git@github.com/Secozzi/mpv-android.git")
         }
     }
 }

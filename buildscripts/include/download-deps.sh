@@ -31,6 +31,9 @@ if [ ! -d ffmpeg ]; then
     else
         git clone --depth 1 https://github.com/FFmpeg/FFmpeg ffmpeg
     fi
+    cd ffmpeg
+    git apply ../../patches/ffmpeg_force_mpegts.patch
+    cd ..
 fi
 
 # freetype2

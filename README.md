@@ -1,4 +1,6 @@
-# mpv-android-lib
+# THIS DOESN'T WORK WITHOUT ANIYOMI-FFMPEG-KIT
+
+# mpv for Animiru
 
 [![Build Status](https://github.com/abdallahmehiz/mpv-android/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/abdallahmehiz/mpv-android/actions/workflows/build.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.abdallahmehiz/mpv-android-lib.svg)](https://central.sonatype.com/artifact/io.github.abdallahmehiz/mpv-android-lib)
