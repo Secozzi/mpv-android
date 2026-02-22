@@ -26,11 +26,7 @@ fi
 
 # ffmpeg
 if [ ! -d ffmpeg ]; then
-    if [ $IN_CI -eq 1 ]; then
-        git clone --branch $v_ci_ffmpeg --depth 1 https://github.com/FFmpeg/FFmpeg ffmpeg
-    else
-        git clone --depth 1 https://github.com/FFmpeg/FFmpeg ffmpeg
-    fi
+    git clone --branch $v_ffmpeg --depth 1 https://github.com/FFmpeg/FFmpeg ffmpeg
     cd ffmpeg
     git apply ../../patches/ffmpeg_force_mpegts.patch
     cd ..
