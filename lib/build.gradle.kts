@@ -10,7 +10,7 @@ plugins {
 val abiCodes = mapOf("armeabi-v7a" to 1, "arm64-v8a" to 2, "x86" to 3, "x86_64" to 4)
 val universalBase = 8000
 
-version = "0.1.12"
+version = "0.1.13"
 group = "io.github.secozzi"
 
 android {
