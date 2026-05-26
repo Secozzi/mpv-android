@@ -57,12 +57,15 @@ object Utils {
 
     fun copyAssets(context: Context) {
         val assetManager = context.assets
-        val files = arrayOf("subfont.ttf", "cacert.pem")
+        val files = arrayOf("cacert.pem")
         val configDir = context.filesDir.path
 
         for (name in files) {
             copyAssetFile(assetManager, name, File("$configDir/$name"))
         }
+
+        // we used to ship this, but it's no longer needed
+        File("$configDir/subfont.ttf").delete()
     }
 
     fun findRealPath(fd: Int): String? {
@@ -337,9 +340,9 @@ object Utils {
     )
 
     val VERSIONS = Versions(
-        mpv = "%MPV_VERSION%",
-        buildDate = "%DATE%",
-        libPlacebo = "%LIBPLACEBO_VERSION%",
-        ffmpeg = "%FFMPEG_VERSION%",
+        mpv = "v0.41.0-dev-g1ac687d79",
+        buildDate = "May 26 2026 04:58:03",
+        libPlacebo = "v7.364.0",
+        ffmpeg = "b08d796",
     )
 }
